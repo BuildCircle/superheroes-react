@@ -15,10 +15,14 @@ We expect the solution to be simple, readable, and to be supported by good unit 
 yarn test
 ```
 
-## 2. Hero and villain names
+## 2. Check the code
 
-We need a way of taking in a hero name and a villain name as inputs, and a battle button.
+Are there any quick wins or quality issues with the code as we have found it?
 
-## 3. Triggering the battle
+## 3. Hero and villain name input
 
-When the battle button is clicked, we need to load the characters JSON and find the characters by their name. We can then compare the scores of each character, the winner has the higher score.
+We need a way of taking in a hero name and a villain name as inputs, and a battle button to trigger the fight!
+
+## 4. Triggering the battle
+
+When the battle button is clicked, we need to load the characters JSON file and find the characters by their name. We can then compare the scores of each character, the winner has the higher score. We should show the winner on the page after the battle is over.

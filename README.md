@@ -17,7 +17,7 @@ yarn test
 
 ## 2. Check the code
 
-Are there any quick wins or quality issues with the code as we have found it?
+Familiarise yourself with the code. What does it all do? What do the tests do?
 
 ## 3. Hero and villain name input
 

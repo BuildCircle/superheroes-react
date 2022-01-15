@@ -1,11 +1,21 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+import { renderWithRouter } from "./test-util";
 
-test('renders the hero and villain labels', () => {
-  render(<App />);
-  const heroLabel = screen.getByText(/Hero/i);
-  const villainLabel = screen.getByText(/Villain/i);
+describe("App", () => {
+  describe("Routes", () => {
+    it("should render the character selection page by default", () => {
+      renderWithRouter(<App />);
 
-  expect(heroLabel).toBeInTheDocument();
-  expect(villainLabel).toBeInTheDocument();
+      expect(screen.getByText(/select character/i)).toBeInTheDocument();
+    });
+
+    it("should render the character fight page", () => {
+      renderWithRouter(<App />, {
+        route: "/hero/villian",
+      });
+
+      expect(screen.getByText(/fight/i)).toBeInTheDocument();
+    });
+  });
 });

@@ -4,6 +4,10 @@ import { useParams } from "react-router-dom";
 import { Character, getByName } from "../../services/characters";
 import determineStrongerCharacter from "../../utils/determineStrongerCharacter";
 
+const CharacterName = ({ name }: { name?: string }) => (
+  <p className="w-full py-6 text-center md:pr-32">{name ?? "????"}</p>
+);
+
 export default function CharacterBattle() {
   const { hero, villain } = useParams();
   const heroQuery = useQuery(["hero", hero], () => getByName(hero!));
@@ -46,17 +50,13 @@ export default function CharacterBattle() {
   return (
     <div className="relative flex flex-col flex-1 text-5xl">
       <div className="flex flex-col items-center justify-center flex-1 w-full md:flex-row">
-        <p className="w-full py-6 text-center md:pr-32">
-          {heroQuery.data?.name ?? "????"}
-        </p>
+        <CharacterName name={heroQuery.data?.name} />
         <p className="flex items-center gap-2 text-3xl md:text-5xl">
           <span className="inline-block pb-2">V</span>
           <span className="inline-block w-px h-16 bg-gradient-to-b from-transparent via-white to-transparent md:h-32 rotate-12 "></span>
           <span className="inline-block pt-2">S</span>
         </p>
-        <p className="w-full py-6 text-center md:pl-32">
-          {villainQuery.data?.name ?? "????"}
-        </p>
+        <CharacterName name={villainQuery.data?.name} />
       </div>
 
       {winner || tie ? (

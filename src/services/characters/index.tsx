@@ -13,8 +13,7 @@ const characterApi = (): Promise<Character[]> =>
     },
   })
     .then((res) => res.json())
-    .then((data) => data.items)
-    .catch((err: Error) => err.message);
+    .then((data) => data.items);
 
 export const getAll = () => characterApi();
 

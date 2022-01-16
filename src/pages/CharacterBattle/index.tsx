@@ -2,12 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { Character, getByName } from "../../services/characters";
-
-const determineWinner = (a: Character, b: Character) => {
-  if (a.score > b.score) return a;
-  else if (b.score > a.score) return b;
-  else return null;
-};
+import determineStrongerCharacter from "../../utils/determineStrongerCharacter";
 
 export default function CharacterBattle() {
   const { hero, villain } = useParams();
@@ -25,7 +20,10 @@ export default function CharacterBattle() {
     }
 
     timer.current = setTimeout(() => {
-      const _winner = determineWinner(heroQuery.data!, villainQuery.data!);
+      const _winner = determineStrongerCharacter(
+        heroQuery.data!,
+        villainQuery.data!
+      );
 
       if (_winner) {
         setWinner(_winner);
@@ -38,7 +36,11 @@ export default function CharacterBattle() {
   }, [heroQuery, villainQuery]);
 
   if (heroQuery.isError || villainQuery.isError) {
-    return <p>Oops something went wrong...</p>;
+    return <p data-testid="error">Oops something went wrong...</p>;
+  }
+
+  if (heroQuery.data === null || villainQuery.data === null) {
+    return <p>Hmmm we don't know that one</p>;
   }
 
   return (
@@ -58,7 +60,11 @@ export default function CharacterBattle() {
       </div>
 
       {winner || tie ? (
-        <p aria-live="assertive" className="py-20 text-center">
+        <p
+          data-testid="winner"
+          aria-live="assertive"
+          className="py-20 text-center"
+        >
           {winner && (
             <>
               The winner is <span className="underline">{winner.name}</span>!

@@ -1,7 +1,14 @@
 import { render } from "@testing-library/react";
 import { JSXElementConstructor, ReactElement, ReactNode } from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider, setLogger } from "react-query";
 import { MemoryRouter } from "react-router-dom";
+
+setLogger({
+  log: console.log,
+  warn: console.warn,
+  // ✅ no more errors on the console
+  error: () => {},
+});
 
 const Wrapper = ({
   children,

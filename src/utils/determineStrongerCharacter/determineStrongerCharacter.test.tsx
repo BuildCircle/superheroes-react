@@ -25,7 +25,7 @@ describe("Util - determineStrongerCharacter", () => {
         { ...hero, score: 8 },
         { ...villain, score: 8 },
       ] as Input,
-      null as Output,
+      { ...hero, score: 8 } as Output,
     ], // Tie
   ])(
     "should correctly calculate the stronger character based on score",

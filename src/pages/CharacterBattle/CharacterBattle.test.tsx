@@ -97,7 +97,7 @@ describe("Page - Character Battle", () => {
       jest.runOnlyPendingTimers();
     });
 
-    await screen.findByText(`It's a tie!`);
+    expect(await screen.findByTestId("winner")).toHaveTextContent(hero.name);
   });
 
   it("should handle api failures", async () => {

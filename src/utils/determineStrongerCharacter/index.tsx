@@ -1,9 +1,9 @@
 import { Character } from "../../services/characters";
 
-const determineStrongerCharacter = (a: Character, b: Character) => {
-  if (a.score > b.score) return a;
-  else if (b.score > a.score) return b;
-  else return null;
+const determineStrongerCharacter = (hero: Character, villain: Character) => {
+  if (hero.score > villain.score) return hero;
+  else if (villain.score > hero.score) return villain;
+  else if (hero.score === villain.score) return hero;
 };
 
 export default determineStrongerCharacter;

@@ -26,3 +26,7 @@ We need a way of taking in a hero name and a villain name as inputs, and a battl
 ## 4. Triggering the battle
 
 When the battle button is clicked, we need to load the characters JSON file and find the characters by their name. We can then compare the scores of each character, the winner has the higher score. We should show the winner on the page after the battle is over.
+
+## 5. Weaknesses
+
+Each hero usually has a nemesis. This is captured in the weakness field in the JSON. If a hero is fighting a villain that matches the villain in their weakness field their score is weakened by 1 point. Lets write some code to handle this.

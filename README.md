@@ -9,11 +9,26 @@ During a battle the character with the highest score wins.
 We expect the solution to be simple, readable, and to be supported by good unit tests (reliable, fast, and asserting behaviour).
 
 
+## Getting started
+
+The app uses Node 24 (see `.nvmrc`), [Vite](https://vite.dev) and [Vitest](https://vitest.dev).
+
+```
+yarn install
+yarn start
+```
+
+`yarn start` (or `yarn dev`) runs the app at http://localhost:5173. `yarn build` creates a production build in `dist/`.
+
 ## 1. Run the tests
 
 ```
 yarn test
 ```
+
+This runs the tests once. Use `yarn test:watch` to re-run them as you change code.
+
+Tests use Vitest with React Testing Library. The API matches Jest (`test`, `expect` and the jest-dom matchers are available globally); use `vi.fn()` and `vi.mock()` where you would use `jest.fn()` and `jest.mock()`.
 
 ## 2. Check the code
 
